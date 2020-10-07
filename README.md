@@ -1,4 +1,12 @@
-# React Awesome Reveal
+# A fork of React-awesome-reveal which exports inner annimations and props
+
+The goals of this fork are
+
+1. export keyframe animations for the purpoe of composing them with slight modifications
+2. adding support for distance prop for Fade Animations rather than 100%
+3. add support for react reveal style `when` prop
+
+## React Awesome Reveal
 
 [![Version](https://badgen.net/npm/v/react-awesome-reveal)](https://www.npmjs.com/package/react-awesome-reveal/v/latest)
 [![Last Commit](https://badgen.net/github/last-commit/dennismorello/react-awesome-reveal)](https://github.com/dennismorello/react-awesome-reveal/commits/master)
