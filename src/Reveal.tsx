@@ -13,11 +13,11 @@ import fadeInLeft from "./animations/fading_entrances/fadeInLeft";
 import { getAnimationCss } from "./utils/animations";
 
 export interface RevealProps {
-   /**
+  /**
    * Should the animation initiate? if false will not run
    * @default true
    */
-  run?: boolean
+  run?: boolean;
   /**
    * Stagger its children animations.
    * @default false
@@ -130,7 +130,7 @@ export const Reveal: React.FC<RevealProps> = ({
         getAnimationCss({
           keyframes,
           delay: delay + (cascade ? index * duration * damping : 0),
-          duration,
+          duration
         })
       );
 
