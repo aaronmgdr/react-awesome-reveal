@@ -13,6 +13,11 @@ import fadeInLeft from "./animations/fading_entrances/fadeInLeft";
 import { getAnimationCss } from "./utils/animations";
 
 export interface RevealProps {
+   /**
+   * Should the animation initiate? if false will not run
+   * @default true
+   */
+  run?: boolean
   /**
    * Stagger its children animations.
    * @default false
@@ -77,6 +82,7 @@ export const Reveal: React.FC<RevealProps> = ({
   fraction = 0,
   keyframes = fadeInLeft,
   triggerOnce = false,
+  run = true,
   css,
   className,
   style,
@@ -100,7 +106,7 @@ export const Reveal: React.FC<RevealProps> = ({
             <div
               ref={ref}
               css={
-                inView
+                inView && run
                   ? [css, getAnimationCss({ keyframes, delay, duration })]
                   : { opacity: 0 }
               }
@@ -124,7 +130,7 @@ export const Reveal: React.FC<RevealProps> = ({
         getAnimationCss({
           keyframes,
           delay: delay + (cascade ? index * duration * damping : 0),
-          duration
+          duration,
         })
       );
 
@@ -146,7 +152,7 @@ export const Reveal: React.FC<RevealProps> = ({
                 jsx(nodeElement.type, {
                   ...nodeElement.props,
                   ref,
-                  css: inView ? [css, ...nodeCss] : { opacity: 0 },
+                  css: inView && run ? [css, ...nodeCss] : { opacity: 0 },
                   className: cn(childClassName, nodeElement.props.className),
                   style: { ...childStyle, ...nodeElement.props.style }
                 })
@@ -159,7 +165,7 @@ export const Reveal: React.FC<RevealProps> = ({
               {({ inView, ref }) => (
                 <div
                   ref={ref}
-                  css={inView ? [css, ...nodeCss] : { opacity: 0 }}
+                  css={inView && run ? [css, ...nodeCss] : { opacity: 0 }}
                   className={className}
                   style={style}
                 >
